@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<h1>jQueryAPI特点</h1>
+<button id="btn1">click me(0)</button>
+<button id="btn2">click me(0)</button>
+<button id="btn3">click me(0)</button>
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+//1. 查找触发事件的元素
+//var btns=document.getElementsByTagName("button");
+var $btns=$("button");
+console.log($btns);
+//2. 绑定事件
+//for(var btn of $btns){
+  //btn.onclick=function(){
+$btns.click(function(){
+  //3. 查找要修改的元素
+  //var btn=this;
+  var $btn=$(this);
+  //4. 修改元素
+  var n=parseInt(
+    //btn.innerHTML.slice(9,-1)
+    $btn.html().slice(9,-1)
+  );
+  //btn.innerHTML=`click me(${++n})`
+  $btn.html(`click me(${++n})`)
+  //}
+//}
+});
+</script>
+</body>
+</html>
