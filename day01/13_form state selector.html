@@ -16,17 +16,26 @@
 <script src="js/jquery-1.11.3.js"></script>
 <script>
 //1. 查找触发事件的元素
-$("form>:checkbox")
+$("form>:input:checkbox")
 //2. 绑定事件
 .click(function(){
 	//3. 查找要修改的元素
-	$("form>:input:not(:checkbox)")
+	//查找除了(:not)checkbox(:checkbox)之外的所有
+	//其他表单元素(:input)
+	var $others=$("form>:input:not(:checkbox)")
 	//4. 修改元素
+	var $chb=$(this);
 	//如果当前checkbox是选中的(is(":checked")==true)
+	if($chb.is(":checked")==true){
 		//则大家的disabled是false
+		$others.prop("disabled",false);
+		}else{
 	//否则如果当前checkbox是未选中的(is(":checked")==false)
 		//则大家的disabled是true
-	.prop("disabled",!$(this).is(":checked"))
+		$others.prop("disabled",true);
+	    }
+		
+	// .prop("disabled",!$(this).is(":checked"))
 })
 </script>
  </body>
