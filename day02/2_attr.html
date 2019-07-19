@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> new document </title>
+  <meta charset="utf-8">
+ </head>
+ <body>
+	<h1>操作元素的属性</h1>
+	<img src="img/1.jpg" alt="1">
+	<script src="js/jquery-1.11.3.js"></script>
+	<script>
+	  //单击图片，切换下一张
+	  //DOM四步：1.查找要触发的事件元素
+	  var $img=$("img");
+	  //2.绑定事件函数
+	  $img.click(function(){
+		  var $img=$(this);
+		//3.查找要修改的元素
+		//先获得img图片上的序号alt
+		var i=parseInt($img.attr("alt"));
+		i<4?i++:(i=1);
+		//图片的src变成第i张图片
+		//同时图片的alt也要变成响应的序号i
+		$img.attr({
+			src:`img/${i}.jpg`,
+			alt:i
+			})
+	    //4.修改元素	
+	  })
+	  
+	</script>
+ </body>
+</html>

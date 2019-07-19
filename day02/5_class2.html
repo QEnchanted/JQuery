@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> new document </title>
+  <meta charset="utf-8">
+	<style>
+		.alert{
+			border:1px solid #a33;
+			color:#922;
+			background:#fee;
+			padding:10px;
+			position: fixed;
+		}
+		.alert>.close{
+			float:right;
+			font-weight:bold;
+			opacity:.5;
+			cursor:pointer;
+		}
+		.alert>.close:hover{opacity:1}
+		.fade{ /*定义淡入淡出动画的初始状态,常驻元素*/
+			width: 400px;height: 200px;
+			/* 将div定位在窗口正中央 */
+			top:50%;left:50%;
+			margin-top:-110px;
+			margin-left:-210px;
+			/* display:block; */ 
+			opacity: 0;
+			transition: all 2s linear;
+		}
+		.in{ /*定义淡入淡出动画 的结束状态*/
+			width: 400px;height: 200px;
+			/* 将div定位在窗口正中央 */
+			top:50%;left:50%;
+			margin-top:-110px;
+			margin-left:-210px;
+			opacity: 1;
+			/* display:block; */
+		}
+	</style>
+ </head>
+ <body>
+	<button id="btn">click me!</button>
+  <div class="alert fade">
+		<span class="close">×</span>
+		<p>您的浏览器版本太低!请下载最新版本的浏览器</p>
+	</div>
+	<script src="js/jquery-1.11.3.js"></script>
+<script>
+ //当单击按钮时
+ $("#btn").click(function(){
+	 //为对话框添加in class，让其显示出来
+	 $("div.alert").addClass("in");
+ })	  
+ //当单击对话框中x span时，关闭span的父级
+ //对话框元素(移除父元素的in class)
+ $("span.close").click(function(){
+	 $(this).parent().removeClass("in");
+ })
+ //当单击窗口任意位置时
+ $(Window).click(function(e){
+	//只要单击的目标元素不是按钮
+	if($(e.target).is("#btn")==false){
+		//都关闭对话框div(移除div的in class)
+		$("div.alert").removeClass("in");
+	}
+ })
+//.</script>
+ </body>
+</html>
